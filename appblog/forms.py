@@ -4,21 +4,16 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-# class UsuarioFormulario(forms.Form):
-#     nombre=forms.CharField(max_length=30)
-#     apellido=forms.CharField(max_length=30)
-#     dni=forms.IntegerField()
-#     nickname=forms.CharField(max_length=30)
-#     email=forms.EmailField()
-  
 class LibroFormulario(forms.Form):
     titulo = forms.CharField()
     autor = forms.CharField()
     genero = forms.CharField()
  
 class ComentarioFormulario(forms.Form):
+    encabezado=forms.CharField()
     texto = forms.CharField()
 
+    
 class UsuarioRegistroForm(UserCreationForm):
     username=forms.CharField(max_length=30)
     email=forms.EmailField()

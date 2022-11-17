@@ -13,6 +13,7 @@
                     <tr>
                         <th class="table-success">Id</th>
                         <th class="table-success">Creador</th>
+                        <th class="table-success">Titulo</th>
                         <th class="table-success">Publicación</th>
                         <th class="table-success">Fecha</th>
                     </tr>
@@ -22,6 +23,7 @@
                         <tr>
                         <td>{{comment.id}}</td> 
                         <td>{{comment.creador}} </td>
+                        <td>{{comment.encabezado}} </td> 
                         <td>{{comment.texto}} </td>   
                         <td>{{comment.fechaCreacion}} </td>
                         <td><a href= "{% url 'editarComentario' comment.id %}" ><font color="blue">Editar</font></a></td>   

@@ -84,7 +84,7 @@ def comentarioFormulario(request):
         print(miFormulario3)
         if miFormulario3.is_valid:
             informacion = miFormulario3.cleaned_data
-            comentario = Comentario (creador=request.user, texto=informacion["texto"], fechaCreacion=datetime.now())
+            comentario = Comentario (creador=request.user, encabezado=informacion["encabezado"], texto=informacion["texto"], fechaCreacion=datetime.now())
             comentario.save()
             return render(request, "appblog/base2.html")
     else:        
@@ -149,11 +149,12 @@ def actualizarComentario (request, comentario_id):
         print(miFormulario3)
         if miFormulario3.is_valid:
             info=miFormulario3.cleaned_data
+            comentario.encabezado=info['encabezado']
             comentario.texto=info['texto']
             comentario.save()
             return redirect("inicio")      
     else:
-        miFormulario3= ComentarioFormulario(initial={"creador":comentario.creador,"texto":comentario.texto} )
+        miFormulario3= ComentarioFormulario(initial={"creador":comentario.creador,"encabezado":comentario.encabezado,"texto":comentario.texto} )
         return render(request, "appblog/editarComentario.html", {"miFormulario3":miFormulario3, "comentario_id":comentario_id})
 
 
